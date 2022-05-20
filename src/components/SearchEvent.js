@@ -10,6 +10,7 @@ const SearchEvents = ({
   setEventsNotFound,
   newTitle,
   setNewTitle,
+  setChosenCategory,
 }) => {
   //create state to update title on form submit
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -30,6 +31,7 @@ const SearchEvents = ({
       setNewTitle(userInput);
       //ensure error message is not displayed when data is found
       setEventsNotFound(false);
+      setChosenCategory("All");
     }
   };
 

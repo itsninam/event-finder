@@ -63,6 +63,7 @@ function App() {
         setEventsNotFound={setEventsNotFound}
         newTitle={newTitle}
         setNewTitle={setNewTitle}
+        setChosenCategory={setChosenCategory}
       />
       <Categories
         eventsData={eventsData}
