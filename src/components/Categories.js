@@ -7,8 +7,7 @@ const Categories = ({
   eventsData,
   setChosenCategory,
   chosenCategory,
-  filterCat,
-  setFilterCat,
+  setFilteredCategories,
 }) => {
   //create state to store categories from api
   const [categories, setCategories] = useState([]);
@@ -30,13 +29,13 @@ const Categories = ({
     [eventsData]
   );
 
-  //filter categories TODO - figure out how to filter by category
+  //  filter by category: if user selects all display all eventsData, otherwise display based on category
   const handleFilterData = (event, category) => {
     event.preventDefault();
     if (chosenCategory === "All") {
-      setFilterCat(eventsData);
+      setFilteredCategories(eventsData);
     } else {
-      setFilterCat(
+      setFilteredCategories(
         eventsData.filter(
           (event) => event.classifications[0].segment.name === category
         )

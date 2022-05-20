@@ -27,7 +27,7 @@ function App() {
   const [chosenCategory, setChosenCategory] = useState("");
 
   //filtered
-  const [filterCat, setFilterCat] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   //api call
   const fetchData = () => {
@@ -42,7 +42,7 @@ function App() {
     })
       .then((response) => {
         setEventsData(response.data._embedded.events);
-        setFilterCat(response.data._embedded.events);
+        setFilteredCategories(response.data._embedded.events);
 
         console.log(response.data._embedded.events);
       })
@@ -68,11 +68,11 @@ function App() {
         eventsData={eventsData}
         setChosenCategory={setChosenCategory}
         chosenCategory={chosenCategory}
-        filterCat={filterCat}
-        setFilterCat={setFilterCat}
+        filteredCategories={filteredCategories}
+        setFilteredCategories={setFilteredCategories}
       />
       <DisplayEvents
-        eventsData={filterCat}
+        eventsData={filteredCategories}
         eventsNotFound={eventsNotFound}
         newTitle={newTitle}
       />
