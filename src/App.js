@@ -1,8 +1,14 @@
+//Styles
 import "./styles/App.scss";
 
 //Modules
 import { useState } from "react";
 import axios from "axios";
+
+//Components
+import DisplayEvents from "./components/DisplayEvents";
+import Categories from "./components/Categories";
+import SearchEvents from "./components/SearchEvent";
 
 function App() {
   //store api data
@@ -11,14 +17,22 @@ function App() {
   //store user input from the form
   const [userInput, setUserInput] = useState("");
 
-  //create state to update title on form submit
-  const [updateTitle, setUpdateTitle] = useState(false);
+  //create state to display error message if api data not found
+  const [eventsNotFound, setEventsNotFound] = useState(false);
 
   //create new state to capture user input after form submit
   const [newTitle, setNewTitle] = useState("");
 
-  //create state to display error message if api data not found
-  const [eventsNotFound, setEventsNotFound] = useState(false);
+  //capture chosen category
+  const [chosenCategory, setChosenCategory] = useState("");
+
+  //filter by category
+  // const handleFilterCategory = (category) => {
+  //   const filteredCategory = eventsData.filter(
+  //     (event) => event.classifications[0].segment.name === category
+  //   );
+  //   setChosenCategory(filteredCategory);
+  // };
 
   //api call
   const fetchData = () => {
@@ -28,6 +42,7 @@ function App() {
         apikey: "nECUmdyhZAjqAnGtxK8PgEYLTQzbV9mU",
         city: userInput,
         countryCode: "ca",
+        //TODO: fix lat/long
       },
     })
       .then((response) => {
@@ -42,63 +57,26 @@ function App() {
       });
   };
 
-  //call api function on form submit
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!userInput) {
-      alert("please type a city");
-    } else {
-      fetchData();
-      //clear user input
-      setUserInput("");
-      //display user input in title after form submit
-      setUpdateTitle(true);
-      //store user input in new state to update title after form is cleared
-      setNewTitle(userInput);
-      //ensure error message is not displayed when data is found
-      setEventsNotFound(false);
-    }
-  };
-
-  const onChange = (event) => {
-    setUserInput(event.target.value);
-    //ensure error message is not displayed when data is found
-  };
-
   return (
     <div className="App">
-      {/* on submit, display user input in title */}
-      {!updateTitle ? <h1>Events</h1> : <h1>Events in {newTitle}</h1>}
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="searchEvent">Search by city</label>
-        <input
-          id="searchEvent"
-          type="text"
-          onChange={onChange}
-          value={userInput}
-          placeholder="E.g. Toronto"
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {eventsNotFound ? (
-        // inform user if events not found, otherwise display data on page
-        <h2>Sorry, no events found in {newTitle} at this time</h2>
-      ) : (
-        <>
-          {eventsData.map((event) => {
-            return (
-              <div key={event.id}>
-                <h2>{event.name}</h2>
-                <p>{event.dates.start.localDate}</p>
-                <p>{event.dates.start.localTime}</p>
-                <img src={event.images[0].url} alt={event.name}></img>
-                {/* <p>{event["_embedded"].venues[0].address}</p> */}
-              </div>
-            );
-          })}
-        </>
-      )}
+      <SearchEvents
+        fetchData={fetchData}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        setEventsNotFound={setEventsNotFound}
+        newTitle={newTitle}
+        setNewTitle={setNewTitle}
+      />
+      <Categories
+        eventsData={eventsData}
+        setChosenCategory={setChosenCategory}
+        chosenCategory={chosenCategory}
+      />
+      <DisplayEvents
+        eventsData={eventsData}
+        eventsNotFound={eventsNotFound}
+        newTitle={newTitle}
+      />
     </div>
   );
 }
