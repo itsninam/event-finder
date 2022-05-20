@@ -26,13 +26,8 @@ function App() {
   //capture chosen category
   const [chosenCategory, setChosenCategory] = useState("");
 
-  //filter by category
-  // const handleFilterCategory = (category) => {
-  //   const filteredCategory = eventsData.filter(
-  //     (event) => event.classifications[0].segment.name === category
-  //   );
-  //   setChosenCategory(filteredCategory);
-  // };
+  //filtered
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   //api call
   const fetchData = () => {
@@ -47,6 +42,8 @@ function App() {
     })
       .then((response) => {
         setEventsData(response.data._embedded.events);
+        setFilteredCategories(response.data._embedded.events);
+
         console.log(response.data._embedded.events);
       })
       .catch((error) => {
@@ -71,9 +68,11 @@ function App() {
         eventsData={eventsData}
         setChosenCategory={setChosenCategory}
         chosenCategory={chosenCategory}
+        filteredCategories={filteredCategories}
+        setFilteredCategories={setFilteredCategories}
       />
       <DisplayEvents
-        eventsData={eventsData}
+        eventsData={filteredCategories}
         eventsNotFound={eventsNotFound}
         newTitle={newTitle}
       />

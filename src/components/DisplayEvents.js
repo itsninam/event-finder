@@ -28,7 +28,9 @@ const DisplayEvents = ({ eventsData, eventsNotFound, newTitle }) => {
                 )}
                 <p> {event.dates.status.code}</p>
                 <img src={event.images[0].url} alt={event.name}></img>
-                <p>{event.classifications[0].segment.name}</p>
+                {/* {!event.classifications ? null : (
+                  <p>{event.classifications[0].segment.name}</p>
+                )} */}
               </div>
             );
           })}
