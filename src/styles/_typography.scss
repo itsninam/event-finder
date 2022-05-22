@@ -1,0 +1,21 @@
+//Typography.scss
+
+html {
+  font-size: 125%;
+}
+
+body {
+  font-size: 0.8rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  line-height: 45px;
+  text-align: center;
+}
