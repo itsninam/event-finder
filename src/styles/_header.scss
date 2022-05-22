@@ -4,8 +4,8 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
-  height: 50vh;
   position: relative;
+  min-height: 50vh;
 
   &::after {
     content: "";
@@ -20,24 +20,18 @@ header {
     z-index: 0;
   }
 
-  section {
-    height: 100%;
-  }
-
   .formContainer {
+    min-height: 25vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    height: 55%;
   }
 
   form {
     background-color: $white;
     width: 30%;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
     justify-content: space-evenly;
     padding: 5px 10px;
     position: relative;

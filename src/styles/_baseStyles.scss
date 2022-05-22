@@ -45,3 +45,9 @@ button {
     box-shadow: none;
   }
 }
+
+form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
