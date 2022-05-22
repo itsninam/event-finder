@@ -44,7 +44,7 @@ const Categories = ({
   };
 
   return (
-    <section>
+    <section className="categories">
       <form
         action=""
         onSubmit={(event) => handleFilterData(event, chosenCategory)}
