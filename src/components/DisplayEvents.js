@@ -7,7 +7,7 @@ const DisplayEvents = ({ eventsData, eventsNotFound, newTitle }) => {
   };
 
   return (
-    <section>
+    <section className="displayEvents">
       {eventsNotFound ? (
         // inform user if events not found, otherwise display data on page
         <h2>Sorry, no events found in {newTitle} at this time</h2>
@@ -15,23 +15,25 @@ const DisplayEvents = ({ eventsData, eventsNotFound, newTitle }) => {
         <>
           {eventsData.map((event) => {
             return (
-              <div key={event.id}>
-                <h2>{event.name}</h2>
-                <p>{event.dates.start.localDate}</p>
-                {/* exclude api results without time property and remove trailing zeroes from time*/}
-                {event.dates.start.localTime === undefined ? null : (
-                  <p>
-                    {event.dates.start.localTime.replace(/:00$/, "")}
-                    {/* display AM or PM */}
-                    <span>{setTime(event.dates.start.localTime)}</span>
-                  </p>
-                )}
-                <p> {event.dates.status.code}</p>
-                <img src={event.images[0].url} alt={event.name}></img>
-                {/* {!event.classifications ? null : (
+              <ul key={event.id}>
+                <li>
+                  <h2>{event.name}</h2>
+                  <img src={event.images[0].url} alt={event.name}></img>
+                  {/* {!event.classifications ? null : (
                   <p>{event.classifications[0].segment.name}</p>
                 )} */}
-              </div>
+                  <p>Date: {event.dates.start.localDate}</p>
+                  {/* exclude api results without time property and remove trailing zeroes from time*/}
+                  {event.dates.start.localTime === undefined ? null : (
+                    <p>
+                      Time: {event.dates.start.localTime.replace(/:00$/, "")}
+                      {/* display AM or PM */}
+                      <span> {setTime(event.dates.start.localTime)}</span>
+                    </p>
+                  )}
+                  <p>Status: {event.dates.status.code}</p>
+                </li>
+              </ul>
             );
           })}
         </>

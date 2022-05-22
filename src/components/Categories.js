@@ -44,28 +44,30 @@ const Categories = ({
   };
 
   return (
-    <form
-      action=""
-      onSubmit={(event) => handleFilterData(event, chosenCategory)}
-    >
-      {Object.keys(eventsData).length === 0 ? null : (
-        <>
-          <label htmlFor="categories">View by category</label>
-          <select
-            name="categories"
-            id="categories"
-            onChange={onCategoryChange}
-            value={chosenCategory}
-          >
-            {categories.map((category, index) => {
-              return <option key={index}>{category}</option>;
-            })}
-          </select>
-          <button type="submit">Submit</button>
-        </>
-      )}
-      {console.log(chosenCategory)}
-    </form>
+    <section>
+      <form
+        action=""
+        onSubmit={(event) => handleFilterData(event, chosenCategory)}
+      >
+        {Object.keys(eventsData).length === 0 ? null : (
+          <>
+            <label htmlFor="categories">View by category</label>
+            <select
+              name="categories"
+              id="categories"
+              onChange={onCategoryChange}
+              value={chosenCategory}
+            >
+              {categories.map((category, index) => {
+                return <option key={index}>{category}</option>;
+              })}
+            </select>
+            <button type="submit">Submit</button>
+          </>
+        )}
+        {console.log(chosenCategory)}
+      </form>
+    </section>
   );
 };
 

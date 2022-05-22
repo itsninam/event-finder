@@ -55,29 +55,33 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <SearchEvents
-        fetchData={fetchData}
-        userInput={userInput}
-        setUserInput={setUserInput}
-        setEventsNotFound={setEventsNotFound}
-        newTitle={newTitle}
-        setNewTitle={setNewTitle}
-        setChosenCategory={setChosenCategory}
-      />
-      <Categories
-        eventsData={eventsData}
-        setChosenCategory={setChosenCategory}
-        chosenCategory={chosenCategory}
-        filteredCategories={filteredCategories}
-        setFilteredCategories={setFilteredCategories}
-      />
-      <DisplayEvents
-        eventsData={filteredCategories}
-        eventsNotFound={eventsNotFound}
-        newTitle={newTitle}
-      />
-    </div>
+    <>
+      <header>
+        <SearchEvents
+          fetchData={fetchData}
+          userInput={userInput}
+          setUserInput={setUserInput}
+          setEventsNotFound={setEventsNotFound}
+          newTitle={newTitle}
+          setNewTitle={setNewTitle}
+          setChosenCategory={setChosenCategory}
+        />
+      </header>
+      <main className="wrapper">
+        <Categories
+          eventsData={eventsData}
+          setChosenCategory={setChosenCategory}
+          chosenCategory={chosenCategory}
+          filteredCategories={filteredCategories}
+          setFilteredCategories={setFilteredCategories}
+        />
+        <DisplayEvents
+          eventsData={filteredCategories}
+          eventsNotFound={eventsNotFound}
+          newTitle={newTitle}
+        />
+      </main>
+    </>
   );
 }
 

@@ -41,24 +41,25 @@ const SearchEvents = ({
   };
 
   return (
-    <section>
+    <section class="wrapper">
+      <div className="formContainer">
+        <form action="" onSubmit={handleSubmit}>
+          <label htmlFor="searchEvent">Search by city</label>
+          <input
+            id="searchEvent"
+            type="text"
+            onChange={onChange}
+            value={userInput}
+            placeholder="E.g. Toronto"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
       {/* on submit, display user input in title */}
-      {!updateTitle ? (
-        <h1>Events</h1>
-      ) : (
+      {!updateTitle ? null : (
         <h1>Events in {newTitle[0].toUpperCase() + newTitle.slice(1)}</h1>
       )}
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="searchEvent">Search by city</label>
-        <input
-          id="searchEvent"
-          type="text"
-          onChange={onChange}
-          value={userInput}
-          placeholder="E.g. Toronto"
-        />
-        <button type="submit">Submit</button>
-      </form>
     </section>
   );
 };
