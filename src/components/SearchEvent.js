@@ -41,7 +41,7 @@ const SearchEvents = ({
   };
 
   return (
-    <section class="wrapper">
+    <section className="wrapper">
       <div className="formContainer">
         <form action="" onSubmit={handleSubmit}>
           <label htmlFor="searchEvent">Search by city</label>
@@ -57,9 +57,7 @@ const SearchEvents = ({
       </div>
 
       {/* on submit, display user input in title */}
-      {!updateTitle ? null : (
-        <h1>Events in {newTitle[0].toUpperCase() + newTitle.slice(1)}</h1>
-      )}
+      {!updateTitle ? null : <h1>Events in {newTitle}</h1>}
     </section>
   );
 };

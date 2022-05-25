@@ -17,13 +17,18 @@ const Categories = ({
     setChosenCategory(event.target.value);
   };
 
-  //create single categories from api result and add "All" as an option
+  // create single categories from api result and add "All" as an option
   useEffect(
     () =>
       setCategories([
         "All",
         ...new Set(
-          eventsData.map((event) => event.classifications[0].segment.name)
+          eventsData.map((event) =>
+            //eliminate results that do not contain 'classifications' property
+            !event.classifications
+              ? null
+              : event.classifications[0].segment.name
+          )
         ),
       ]),
     [eventsData]
@@ -36,15 +41,18 @@ const Categories = ({
       setFilteredCategories(eventsData);
     } else {
       setFilteredCategories(
-        eventsData.filter(
-          (event) => event.classifications[0].segment.name === category
+        eventsData.filter((event) =>
+          //eliminate results that do not contain 'classifications' property
+          !event.classifications
+            ? null
+            : event.classifications[0].segment.name === category
         )
       );
     }
   };
 
   return (
-    <section className="categories">
+    <section className="categories wrapper">
       <form
         action=""
         onSubmit={(event) => handleFilterData(event, chosenCategory)}

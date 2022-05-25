@@ -1,0 +1,58 @@
+//DisplayEvents.scss
+
+main {
+  background-color: $backgroundColour;
+  min-height: 42vh;
+  padding: 30px 0;
+}
+
+.displayEvents {
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  li {
+    background-color: $white;
+    padding: 15px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 84%;
+    margin: 0 auto 30px auto;
+    transition: 0.7s;
+  }
+
+  .flexContainer {
+    display: flex;
+
+    .titleImgContainer {
+      margin-right: 15px;
+    }
+
+    .infoContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-basis: 60%;
+
+      .boldText {
+        font-weight: 600;
+      }
+    }
+
+    .venueTicketsContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .address {
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  img {
+    width: 350px;
+    margin: 5px 0;
+  }
+}

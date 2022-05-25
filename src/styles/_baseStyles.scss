@@ -13,7 +13,9 @@ li {
 
 h1,
 h2,
-p {
+h3,
+p,
+a {
   margin: 0;
   padding: 0;
 }
@@ -23,6 +25,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+//BaseStyles.scss
 
 button {
   cursor: pointer;
@@ -50,4 +53,20 @@ form {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: $accentColour;
+  padding: 10px;
+  border: 1px solid $accentColour;
+  transition: 0.5s;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: $accentColour;
+  }
 }
