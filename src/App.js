@@ -43,14 +43,13 @@ function App() {
       .then((response) => {
         setEventsData(response.data._embedded.events);
         setFilteredCategories(response.data._embedded.events);
-
-        console.log(response.data._embedded.events);
       })
       .catch((error) => {
         //display error message if api data not found
         setEventsNotFound(true);
         //reset api results to empty array
         setEventsData([]);
+        setFilteredCategories([]);
       });
   };
 
@@ -67,7 +66,7 @@ function App() {
           setChosenCategory={setChosenCategory}
         />
       </header>
-      <main className="wrapper">
+      <main>
         <Categories
           eventsData={eventsData}
           setChosenCategory={setChosenCategory}

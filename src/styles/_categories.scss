@@ -1,7 +1,8 @@
 //Categories.scss
 
 .categories {
-  margin: 30px 0;
+  text-align: center;
+  margin-bottom: 30px;
 
   label {
     margin-right: 10px;
@@ -12,8 +13,7 @@
     padding: 9.5px;
     width: 20%;
     border-radius: 5px;
-    background-color: $lightBlue;
-    border: none;
+    border: 2px solid $secondaryColour;
     cursor: pointer;
   }
 }

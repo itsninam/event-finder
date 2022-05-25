@@ -19,3 +19,34 @@ h1 {
   line-height: 45px;
   text-align: center;
 }
+
+h2 {
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  line-height: 35px;
+
+  .hightlight {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 10%,
+      $lightBlue 90%
+    );
+  }
+}
+
+h3 {
+  letter-spacing: 0.5px;
+  line-height: 25px;
+  font-weight: 400;
+  display: inline;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 50%,
+    $lightBlue 95%
+  );
+}
+
+p {
+  letter-spacing: 0.3px;
+  line-height: 25px;
+}
