@@ -2,6 +2,7 @@
 
 //Modules
 import { useState } from "react";
+import ModalWindow from "./ModalWindow";
 
 const SearchEvents = ({
   fetchData,
@@ -15,12 +16,15 @@ const SearchEvents = ({
   //create state to update title on form submit
   const [updateTitle, setUpdateTitle] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   //call api function on form submit
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!userInput) {
-      alert("please type a city");
+      // alert("Please enter a city");
+      setIsModalOpen(true);
     } else {
       fetchData();
       //clear user input
@@ -55,9 +59,11 @@ const SearchEvents = ({
           <button type="submit">Submit</button>
         </form>
       </div>
-
       {/* on submit, display user input in title */}
       {!updateTitle ? null : <h1>Events in {newTitle}</h1>}
+
+      {/* if there is no user input, display modal window */}
+      {isModalOpen ? <ModalWindow setIsModalOpen={setIsModalOpen} /> : null}
     </section>
   );
 };

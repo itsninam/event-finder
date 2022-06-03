@@ -73,7 +73,6 @@ const Categories = ({
             <button type="submit">Submit</button>
           </>
         )}
-        {console.log(chosenCategory)}
       </form>
     </section>
   );

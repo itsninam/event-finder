@@ -1,10 +1,34 @@
 // DisplayEvents.js
 
+//Modules
+
+//Styling
+import ScrollToTop from "./ScrollToTopButton";
+
 const DisplayEvents = ({ eventsData, eventsNotFound, newTitle }) => {
-  //if time starts with a 0, set it to AM, otherwise set to PM
+  //if is less than 12, set it to AM, otherwise set to PM
   const setTime = (time) => {
-    return time.match(/^0/) ? "AM" : "PM";
+    return time.match(/^0/) || time.match(/^11/) ? "AM" : "PM";
   };
+
+  //create state for heart icon
+  // const [like, setLike] = useState([]);
+  // let b = [];
+
+  // //create function to add ids to likes
+  // const handleLikeEvent = (id) => {
+  //   for (let i = 0; i < like.length; i++) {
+  //     console.log(like[i]);
+  //     //check to see if it is in the array, if it is not add it
+  //     if (b.indexOf(like[i]) === -1) {
+  //       b.push(like[i]);
+  //     } else {
+  //       b.splice(like[i]);
+  //     }
+  //     setLike(b);
+  //   }
+  // };
+  // console.log("likes:", like);
 
   return (
     <section className="displayEvents wrapper">
@@ -24,13 +48,15 @@ const DisplayEvents = ({ eventsData, eventsNotFound, newTitle }) => {
             return (
               <ul key={event.id}>
                 <li>
-                  <h3>{event.name}</h3>
+                  <h3 className="eventName">{event.name}</h3>
+                  {/* <FontAwesomeIcon
+                    icon={faHeart}
+                    className="heartIcon"
+                    onClick={() => handleLikeEvent(event.id)}
+                  /> */}
                   <div className="flexContainer">
                     <div className="titleImgContainer">
                       <img src={event.images[0].url} alt={event.name}></img>
-                      {/* {!event.classifications ? null : (
-                  <p>{event.classifications[0].segment.name}</p>
-                )} */}
                     </div>
                     <div className="infoContainer">
                       <div>
@@ -76,6 +102,15 @@ const DisplayEvents = ({ eventsData, eventsNotFound, newTitle }) => {
             );
           })}
         </>
+      )}
+      {/* display landing-page message if no events available on page, once events are displayed also display scroll to top component */}
+      {Object.keys(eventsData).length === 0 ? (
+        <h3 className="landingPageMessage">
+          Seach for events in your favourite city to discover concerts, games,
+          theater and more
+        </h3>
+      ) : (
+        <ScrollToTop />
       )}
     </section>
   );
