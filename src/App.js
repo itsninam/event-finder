@@ -37,7 +37,6 @@ function App() {
         apikey: "nECUmdyhZAjqAnGtxK8PgEYLTQzbV9mU",
         city: userInput,
         countryCode: "ca",
-        //TODO: fix lat/long
       },
     })
       .then((response) => {
@@ -80,6 +79,9 @@ function App() {
           newTitle={newTitle}
         />
       </main>
+      <footer>
+        <p className="footerText">Developed and designed by Madalina Oancea</p>
+      </footer>
     </>
   );
 }

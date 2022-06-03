@@ -7,9 +7,22 @@ main {
 }
 
 .displayEvents {
+  .titleLikeContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
   h2 {
     margin: 20px 0;
     text-align: center;
+  }
+
+  .heartIcon {
+    color: $primaryColour;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 20px;
   }
 
   li {
@@ -20,6 +33,7 @@ main {
     width: 84%;
     margin: 0 auto 30px auto;
     transition: 0.7s;
+    position: relative;
   }
 
   .flexContainer {
@@ -50,9 +64,15 @@ main {
       }
     }
   }
-
   img {
     width: 350px;
     margin: 5px 0;
   }
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 5px;
+  padding: 9.5px 12px;
 }

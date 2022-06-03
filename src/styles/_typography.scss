@@ -38,12 +38,20 @@ h3 {
   letter-spacing: 0.5px;
   line-height: 25px;
   font-weight: 400;
+}
+
+.eventName {
   display: inline;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 50%,
     $lightBlue 95%
   );
+}
+
+.landingPageMessage {
+  text-align: center;
+  margin: 50px 0;
 }
 
 p {
